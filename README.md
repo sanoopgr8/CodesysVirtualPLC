@@ -29,8 +29,18 @@ Before starting, ensure your host system has the following installed:
   To check:
   ```bash
   docker compose version
+- **Codesys Virtual PLC Runtime**:
+  Download the desired Codesys Virtual Control SL version from [Codesys Store](https://store.codesys.com/en/codesys-virtual-control.html) on to your Windows machine. 
+  Exract the content from the package file navigate to \CODESYS Virtual Control for Linux SL <Your version#>\Delivery to access the images of various architecture
+  Here is an example for arm64 based target machine:
+  ![image](https://github.com/user-attachments/assets/6a44de7f-2413-4e04-91e7-8e18efe0a5f3)
+  Transfer the file Docker_codesyscontrol_virtuallinuxarm64_<Your version#>_arm64.tar.gz to the target machine where you would like to run the VirtualPLC (in this case an arm64 environment)
 
+  Run following command to install the image
+  ```bash
+  sudo docker load < Docker_codesyscontrol_virtuallinuxarm64_<Your version#>_arm64.tar.gz
 
+Adjust the file name per the architecutre and version you choose for your target system. This would load the Codesys Virtual PLC runtime image on your docker engine. Now you can use the Docker Compose file to create new Virtual PLC instance in your Target host. Simply clone this repo and adjust the Compose file per your need. 
 
 ## 🏗️ Architecture
 
