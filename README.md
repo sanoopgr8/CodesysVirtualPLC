@@ -11,6 +11,26 @@ This project provides a containerized environment for running a **Codesys Contro
 > ✅ Compatible with Ubuntu 20.04+, Debian 10+, and ARM64/AMD64 hosts (w/ experimental support for ARM).
 
 ---
+### 🛠️ Prerequisites
+
+Before starting, ensure your host system has the following installed:
+
+- **Operating System**:  
+  - [Ubuntu 20.04+](https://docs.docker.com/engine/install/ubuntu/)
+  - [Debian 10+](https://docs.docker.com/engine/install/debian/)
+
+- **Docker Engine**:  
+  Follow the official installation instructions for your OS:
+  - [Install Docker on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
+  - [Install Docker on Debian](https://docs.docker.com/engine/install/debian/)
+
+- **Docker Compose (v2 or higher)**:  
+  Docker Compose v2 is included in recent Docker versions.  
+  To check:
+  ```bash
+  docker compose version
+
+
 
 ## 🏗️ Architecture
 
