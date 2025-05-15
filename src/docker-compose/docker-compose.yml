@@ -1,0 +1,54 @@
+version: '1.2'
+
+services:
+  codesys:
+    image: ${VPLC_IMAGE}
+    container_name: ${VPLC_CONTAINERNAME}
+    hostname: ${VPLC_HOSTNAME}
+    networks:
+      field_network:
+        ipv4_address: <your desired ip>  # Replace with a valid IP address
+
+    cap_add:
+      - CHOWN
+      - IPC_LOCK
+      - KILL
+      - NET_ADMIN
+      - NET_BIND_SERVICE
+      - NET_BROADCAST
+      - NET_RAW
+      - SETFCAP
+      - SETPCAP
+      - SYS_ADMIN
+      - SYS_MODULE
+      - SYS_NICE
+      - SYS_PTRACE
+      - SYS_RAWIO
+      - SYS_RESOURCE
+      - SYS_TIME
+
+    expose:
+      - "11740"  # Adjust the ports needed to be exposed as required
+      - "443"
+      - "8080"
+      - "4840"
+
+    ports:
+      - 11740:11740  # Ensure this port is available on the host
+
+    volumes:
+      - ~/dockerMount/conf/codesyscontrol/:/conf/codesyscontrol/
+      - ~/dockerMount/data/codesyscontrol/:/data/codesyscontrol/
+      - /var/run/codesysextension/:/var/run/codesysextension/
+      - ~/dockerMount/extension/codesyscontrol/:/var/opt/codesysextension/
+
+    environment:
+      LICENSESERVER: ${LICENSESERVER}
+
+    deploy:
+      restart_policy:
+        condition: any
+
+networks:
+  field_network:
+    external: true  # Ensure this network exists
